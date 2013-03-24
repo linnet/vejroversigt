@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html ng-app>
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
-    <script src="app.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="js/app.js"></script>
     <title>Vejroversigt</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -11,13 +11,12 @@
     <form ng-submit="addZipcode()">
         <input type="text" ng-model="zipcode" size="30"
                placeholder="add new zipcode here">
-        <input class="btn-primary" type="submit" value="add">
     </form>
     <div ng-repeat="zipcode in zipcodes">
         <a href="http://www.dmi.dk/dmi/index/danmark/byvejr_danmark.htm?by={{zipcode}}">
-            <img src="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by={{zipcode}}&mode=long&eps=true"/>
+            <img ng-src="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by={{zipcode}}&mode=long&eps=true"/>
         </a>
-        <a class="remove" href="" ng-click="removeZipcode(zipcode)">Remove</a>
+        <a class="remove" href="" ng-click="removeZipcode(zipcode)"><img src="minus.png"></a>
     </div>
 </div>
 </body>
