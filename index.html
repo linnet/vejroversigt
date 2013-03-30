@@ -9,20 +9,23 @@
 <body>
 <div ng-controller="WeatherCtrl">
     <div id="region">
-        <p>Regionsoversigt:</p>
+        <h1>Regionsoversigt</h1>
         <a href="http://www.dmi.dk/dmi/danmark/regionaludsigten/kbhnsj.htm"><img src="http://www.dmi.dk/dmi/femdgn_kobenhavn.png" /></a>
     </div>
 
-    <form ng-submit="addZipcode()">
-        <input type="text" ng-model="zipcode" size="30"
-               placeholder="add new zipcode here">
-        <img ng-submit="addZipcode()" src="plus.png" alt="">
-    </form>
-    <div ng-repeat="zipcode in zipcodes">
-        <a ng-href="http://www.dmi.dk/dmi/index/danmark/byvejr_danmark.htm?by={{zipcode}}">
-            <img ng-src="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by={{zipcode}}&mode=long&eps=true"/>
-        </a>
-        <a class="remove" href="" ng-click="removeZipcode(zipcode)"><img src="minus.png"></a>
+    <div id="local">
+        <h1>Lokalvejr</h1>
+        <form ng-submit="addZipcode()">
+            <input type="text" ng-model="zipcode" size="30"
+                   placeholder="add new zipcode here">
+            <img ng-submit="addZipcode()" src="plus.png" alt="">
+        </form>
+        <div class="city" ng-repeat="zipcode in zipcodes">
+            <a ng-href="http://www.dmi.dk/dmi/index/danmark/byvejr_danmark.htm?by={{zipcode}}">
+                <img ng-src="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by={{zipcode}}&mode=long&eps=true"/>
+            </a>
+            <a class="remove-button" ng-click="removeZipcode(zipcode)"></a>
+        </div>
     </div>
 </div>
 </body>
